@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
+		<script>	
+			window.onscroll = function() {scrollFunc()};		
+
+			function openTab(evt, tabName) {
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(tabName).style.display = "block";
+				evt.currentTarget.className += " active";
+			}
+
+			function scrollFunc() {
+				var navbar = document.getElementById("navbar");
+				var sticky = navbar.offsetTop;
+				if (window.pageYOffset >= sticky) {
+					navbar.classList.add("sticky")
+				} 
+				 else {
+					navbar.classList.remove("sticky");
+				}
+			}
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+	</head>
+
+	<body>
+		
+		
+		<div class="header">
+		  <h1>MatthewMicklewright.com</h1>
+		  <p id="SubTitle"></p>
+		  <script>
+			var Subtitles = [
+				'I have too much time on my hands....',
+				'Micklepussy.net was already taken....',
+				'Hello There',
+				'Hi Mum',
+				'Bet you were hoping for a 404 error',
+				'Did you remeber to lock your front door?',
+				'Witty Quote Not Found'
+			];
+				
+			document.getElementById("SubTitle").innerHTML = Subtitles[Math.round(Math.random()*Subtitles.length)];
+		  </script>
+		</div>
+		
+	
+		<div id="navbar">
+		  <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">What the hell is this?</button>
+		  <button class="tablinks" onclick="openTab(event, 'Tab2')">Is there anything interesting here?</button>
+		  <button class="tablinks" onclick="openTab(event, 'Tab3')">Who can I speak with to make this end?</button>
+		</div>
+
+		<div id="Tab1" class="tabcontent">
+		  <h3>About</h3>
+		  <p class="CenterText">I'm Matt, a 19 year old Computer Science student at the University of Lincoln. <br> Oh, and I do crack on the weekends</p>
+		  
+		</div>
+		
+		<div id="Tab2" class="tabcontent">
+			<h3>Nope </h3>
+			<p>Not at the moment anyway</p>
+			<a href="Assets/CV.pdf" target="_blank">CV Download</a>
+			<a href="https://github.com/MickleByte">GitHub</a> 
+		</div>
+
+		<div id="Tab3" class="tabcontent">
+			<h3>Contacts</h3>
+			<p class="CenterText"> Some Ways you can get in touch with me, whilst I try to get in touch with reality</p>
+			<ul class="CenterText" >
+				<li><a href="mailto:matthewmicklewright@gmail.com">Email Me</a></li>
+			</ul>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+			<p>some text <br></p>
+		 </div>
+		
+		
+
+	</body>
+			
+	<script>
+		document.getElementById("defaultOpen").click();
+	</script>
+</html>
