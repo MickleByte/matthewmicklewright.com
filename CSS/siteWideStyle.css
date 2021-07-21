@@ -1,0 +1,127 @@
+@import url("colours.css");
+
+* {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: light;
+}
+
+.header{
+    background-color: var(--darkBackground);
+    color: var(--lightText);
+    overflow:auto;
+}
+
+.title{
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.light{
+    color: var(--lightText);
+}
+
+.light:hover{
+    color: var(--darkText);
+}
+
+#emailLink{
+    text-decoration: underline;
+    color: var(--darkText);   
+}
+
+#emailLink:hover{
+    text-decoration: underline;
+    color: var(--lightText);   
+}
+
+a.dark{
+    color: var(--darkText);   
+}
+
+a.dark:hover{
+    color:var(--lightText);
+}
+
+.dark{
+    color: var(--darkText);
+}
+.dark:hover{
+    color: var(--lightText);
+}
+
+.subtitle{
+    text-align: center;
+}
+
+.contentSection{
+    background-color: var(--lightBackground);
+    margin:auto;
+    text-align: center;
+    width:100%;
+}
+
+.button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none; 
+    font-size: large;
+    background-color: var(--lightBackground);
+    color: var(--darkText);
+    border: 2px solid var(--lightBackground);
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+.button:hover {
+    color: var(--lightText);
+    cursor: pointer;
+    background-color: var(--darkBackground);
+    border: 2px solid var(--darkBackground);
+    
+}
+
+.largeBtn{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: xx-large;
+}
+
+
+/*Desktop*/
+
+@media only screen and (min-width: 768px) {
+
+    .contentSection{
+        margin:auto;
+        text-align: left;
+        width:70%;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .largeBtn{
+        width: 20%;
+    }
+    .header{
+        margin:auto;
+        width:70%;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    ul{
+        list-style-type: circle;
+    }
+}

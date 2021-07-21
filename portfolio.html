@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="CSS/siteWideStyle.css">
+    <link rel="stylesheet" type="text/css" href="CSS/portfolio.css">
+    <link rel='icon' href='Assets/favicon.ico' type='image/x-icon'/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="XZJuHpkFANlLzFMDo3jC8rFqcaXDwpYBZ0SZKmY62PI"/>    
+    <meta name="keywords" content="Matthew Micklewright, Portfolio">
+    <meta name="robots" content="index, follow">
+    <title>Matthew Micklewright - Portfolio</title>
+	
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+		tex2jax: {
+		  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		  processEscapes: true
+		}
+	  });
+	</script>
+
+	<script type="text/javascript"
+		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="title">
+            <h1>
+                <a class="light" href="index.html">
+                    Matthew<wbr> Micklewright
+                </a>
+            </h1>
+        </div>
+        <div class="subtitle">
+            <h3>
+
+            </h3>
+        </div>
+    </header>
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">Verilog Transpiler</h3>
+
+        <img src="Assets/HDLTranspiler.JPG" alt="alt text" class="projectImage" />  
+        <p>
+            Created as a part of my final year disertation, this web app allows users to draw logic diagrams by dragging and dropping componenets. Diagrams can then be simulated to test their functionality and can also be automaticaly converted to Verilog HDL.
+            As well as the Verilog code for the module, the app can also generate a test bench. The project is open source and can be used under the GNU General Public License.
+        </p>  
+        <a href="HDLTranspiler/index.html" class="button portfolioBtn">
+            Use the App
+        </a>
+        <a href="https://github.com/MickleByte/HDLTranspiler" class="button portfolioBtn">
+            See it on Github
+        </a>
+    </section>
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">Image Processing with Matlab</h3>
+      
+        <p>
+            In this project the logo if the Lincoln University Student's Union was searched for in a larger image. This was done through several steps of cleaning up the input image before analysing the signatures of connected componenets to find the best match.
+            <br><br>
+            The input image is first resized and converted to grayscale using bilinear interpolation:
+            <div class="projectImageSmall">
+                <img src="Assets/ImageProcessing1.JPG" alt="alt text" class="projectImageLHS" />
+                <img src="Assets/ImageProcessing2.png" alt="alt text" class="projectImageLHS" />
+            </div>
+
+            Next, a histogram is made and a global threshold is iteratively calculated. Using this threshold, the image is binarised by setting all pixels greater than the threshold to 1 and all less to 0.
+            <div class="projectImageSmall">
+                <img src="Assets/ImageProcessing3.png" alt="alt text" class="projectImageLHS" />
+                <img src="Assets/ImageProcessing4.png" alt="alt text" class="projectImageLHS" />
+            </div>
+            The final step is to locate connected componenets in the binary image and calculate a signature for each by measuring the distance from the centroid (red crosses) to the component boundary in all directions. These signatures are then normalised and compared to a known example of the swans signature. The best matching signature is outputed.
+            <div class="projectImageSmall">
+                <img src="Assets/ImageProcessing5.png" alt="alt text" class="projectImageLHS" />
+                <img src="Assets/ImageProcessing6.png" alt="alt text" class="projectImageLHS" />
+            </div>
+        </p>  
+        <a href="Assets/BestMatchImageProcessing.zip" class="button portfolioBtn">
+            Download The Code & Image Library
+        </a>
+    </section>
+
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">Loops Within Pi</h3>       
+        <div class="videoWrapper">
+            <iframe width="560" height="349" src="https://www.youtube.com/embed/W20aT14t8Pw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p>
+            Inspired by the above Numberphile video, I created two solutions to find strings and loops in Pi. The first, takes a user's integer input 
+            and searches the digits of Pi for that value. Once it is found, the index is used as the new search value. <br><br>
+            E.g. pi is 3.14159265358979323846, the number 2 can be found at position 5 (if we start with the first decimal place = position 0), 5's first occurance is at position 8, 8 at 10, etc. <br><br>
+            The conjecture is that all starting points will loop back to their starting number, or terminate in a self identifying number (e.g. 6 is at position 6).
+            The main issue is that it is unkown how many digits will be needed to find the first occurance of a given number, so this solution searches the current space and if no match is found it doubles the number of digits and tries again. 
+			This means that it can, in theory, find the index of any number given infinite time and resources.<br>
+        </p>
+        <p>
+            Unfortunatley, for real world application a solution requiring infinite time to run isn't very handy. Very few loops or strings can be calculated this way in a reasonable time. The main bottleneck is the calculation of Pi, 
+            taking tens of minutes to compute even a hundred thousand digits. So the second solution combs through a pre-calculated list of digits. Unfortunatley, even with 150 million digits most cycles for values between 0 and 100 cannot be found.
+        </p>
+		<p>
+			The <a href="https://www.angio.net/pi/whynotpi.html">probability of finding a string</a> of length $d$ in a random string (Pi), of length $N$ is:
+			$$P = 1 - \frac{1}{ e^\left(0.1^d N\right)}$$
+			
+			Graphing these probabilities with $N = 10^6$ and values of $d$ between 1 and 9, shows us the following:
+			
+		</p>
+		<div class="projectImageSmall">
+			<img src="Assets/piProb.JPG" alt="alt text" class="projectImage" />
+		</div>
+		<p>
+			Repeating this graphing process with different values for n, where
+			$ n = \log_{10} N$,
+			shows that the relationship between $n$ and $d$ is as follows:
+			<ul>
+				<li>
+					if $d < n$, the probability of finding the string is near 1
+				</li>
+				<li>
+					if $d = n$ or $d = n + 1$, the probability of finding the string is around 0.65 or 0.15, respectively
+				</li>
+				<li>
+					and if $d > n + 1$, the probability of finding the string is near 0
+				</li>
+			</ul>
+		</p>
+		<p>
+			Knowing this, we can say that to have a probability of 0.65 (or more) of finding a loop in pi, the maximum length of any string in that loop must be less than or equal to $log_{10}N$, where $N$ is the number of digits of Pi we have available.
+			Furthermore, with the current max search domain of 150million digits, we know that if a string exceeds 8 digits, we are unlikely to find it.
+		</p>
+        <a href="Assets/loopsInPi.py" class="button portfolioBtn">
+            Download 1st Solution
+        </a>
+        <a href="Assets/solution2.zip" class="button portfolioBtn">
+            Download 2nd Solution
+        </a>
+    </section>
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">Gravitas - Newtonian Gravity Simulator</h3>
+        <img src="Assets/GravitasImage1.JPG" alt="alt text" class="projectImage" />
+        <p>
+            Written in VB.Net, Gravitas is a 2D Newtonian Gravity Simulator designed to help GCSE Physics students better visualise orbital motion. It allows the user to draw planet objects
+            on a canvas with a defined radius and average density. From this, the force due to gravity can be simulated.
+
+            The software has variable simulation speed, options to handle collisions, and a path tracing option to better visualise orbital motion. 
+
+            Users can also save and load interesting simulations.
+        </p>
+        <a href="Assets/Gravitas.zip" class="button portfolioBtn">
+            Download Gravitas
+        </a>
+        <a href="Assets/GravitasDocumentation.pdf" class="button portfolioBtn">
+            Download Design Documentation
+        </a>
+        <a class="button portfolioBtn" href="https://github.com/MickleByte/Gravitas">
+            See it on GitHub
+        </a>
+    </section>
+
+     <section class="contentSection projectSection">
+        <h3 class="projectTitle">Polynomial Regression & K Means Clustering</h3>
+        <img src="Assets/LinearRegression.PNG" alt="alt text" class="projectImage" />       
+        <p>
+            This Python code utilises <a href="https://numpy.org/">NumPy</a> and <a href="https://matplotlib.org/">Matplotlib</a>. It reads data in from a CSV file and plots it on a scatter plot. Then, a polynomial is calculated and plotted with the user's specified degree. This allows the user to try different polynomials to find a fitting line for their data
+        </p>  
+        <img src="Assets/kMeans.PNG" alt="alt text" class="projectImage" />  
+        <p>
+            The K Means Clustering code takes in a multi-dimmensional dataset and clusters the data into k groups. The data can then be plotted on any two of the metrics on the x and y axes.
+        </p>
+        <a href="Assets/linearRegression.py" class="button portfolioBtn">
+            Download Regression Code
+        </a>
+        <a href="Assets/kMeans.py" class="button portfolioBtn">
+            Download K Means Code
+        </a>
+        <a href="Assets/MLReport1.pdf" class="button portfolioBtn">
+            Report on Regression and K Means
+        </a>
+    </section>
+
+   
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">Where's Wally - Nearest Neighbour Search</h3>
+        <img src="Assets/WheresWally.JPG" alt="alt text" class="projectImage" />
+        <p>
+            This program takes a small sample image and does a nearest neighbour search on a larger image to find the
+            nearest match. The user can choose from a number of algorithms, each using a different metric (differences,
+            sum of squared differences, normalised correlation), to compare the images. The program was written in C++
+        </p>
+        <a href="Assets/WhereWallySourceCode.zip" class="button portfolioBtn">
+            Download The Code
+        </a>
+        <a class="button portfolioBtn" href="https://github.com/MickleByte/WheresWally">
+            See it on GitHub
+        </a>
+    </section>
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">Long Eaton Scout District Website</h3>
+        <img src="Assets/scoutSiteImage1.JPG" alt="alt text" class="projectImage" />
+        <p>
+            Long Eaton Scout District's website was designed from scratch by myself to replace an older website. It's designed around the needs of the district and ties in visualy with the Scout Association's 2020 re-brand to provide a seemless experience between the National and local levels.
+        </p>
+        <a href="https://longeatonscouts.org.uk/" class="button portfolioBtn">
+            Visit the Site
+        </a>
+    </section>
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">ARM7TDMI Emulator</h3>
+        <img src="Assets/ARMEmulator.png" alt="alt text" class="projectImage" />
+        <p>
+            This project was developed for a University group project module, it aimed to emulate the ARM7TDMI processor and its instruction set in C++
+        </p>
+        <a href="https://github.com/MickleByte/ARM7TDMI-Emulator" class="button portfolioBtn">
+            See it on Github
+        </a>
+        <a href="Assets/ArmEmulatorReport.pdf" class="button portfolioBtn">
+            Project Report
+        </a>
+    </section>
+
+    <section class="contentSection projectSection">
+        <h3 class="projectTitle">Going to Boston</h3>
+        <img src="Assets/GoingToBoston.jpg" alt="alt text" class="projectImage" />
+        <p>
+            Written in C#, this program runs a virtual dice game called 'Going to Boston', users can play against the
+            computer or another human player in Match play or Score play. The program was written for a University
+            module to demonstrate an understanding of C# and basic OOP
+        </p>
+        <a href="https://github.com/MickleByte/GoingToBostonDiceGame" class="button portfolioBtn">
+            See it on Github
+        </a>
+        <a href="Assets/GoingToBoston.cs" class="button portfolioBtn">
+            Download the Source Code
+        </a>
+    </section>
+
+    <section class="contentSection projectSection" id="miniProjects">
+        <h3 class="projectTitle">Mini Projects</h3>
+        <p>
+            Some little/unfinished projects that don't really deserve their own section but I thought were fun:
+        </p>
+        <ul>
+            <li><a href="lightSpeed.html">Light Speed</a> - Hit F11 for best effect!</li>
+            <li><a href="https://github.com/MickleByte/LCS-Database">LCS Database</a> - an example SQL script that creates and populates a simple database. This was created for a university database module</li>
+        </ul>
+    </section>
+</body>
+
+</html>
