@@ -2,10 +2,10 @@ name: Build and Deploy to S3
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
     types: [closed]
-    branches: [main]
+    branches: [master]
 
 jobs:
   build-and-deploy:
@@ -34,4 +34,4 @@ jobs:
           aws-region: eu-west-2
 
       - name: Sync build directory to S3
-        run: aws s3 sync build/ s3://matthewmicklewright.co.uk/ --delete 
+        run: aws s3 sync build/ s3://matthewmicklewright.com/ --delete 
