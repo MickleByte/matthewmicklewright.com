@@ -1,0 +1,55 @@
+.landing {
+  min-height: calc(100vh - 73px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.landing-content {
+  text-align: center;
+  max-width: 800px;
+  color: white;
+}
+
+.landing-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+.portfolio-button {
+  background-color: white;
+  color: #667eea;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .landing-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .portfolio-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
