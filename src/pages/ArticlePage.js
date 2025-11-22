@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { ArrowLeft } from 'lucide-react';
-import { ARTICLES_ENDPOINT } from '../config/api';
 import { Helmet } from 'react-helmet-async';
 
 const ArticlePage = () => {
@@ -12,14 +11,17 @@ const ArticlePage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const experimentParam = process.env.NODE_ENV === 'development' ? '?experiment=true' : '';
-    fetch(`${ARTICLES_ENDPOINT}/${id}${experimentParam}`)
+    fetch('/articles.json')
       .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch article');
+        if (!res.ok) throw new Error('Failed to fetch articles');
         return res.json();
       })
-      .then(data => {
-        setArticle(data);
+      .then(articles => {
+        const foundArticle = articles.find(article => article.id === id);
+        if (!foundArticle) {
+          throw new Error('Article not found');
+        }
+        setArticle(foundArticle);
         setLoading(false);
       })
       .catch(err => {
@@ -43,19 +45,7 @@ const ArticlePage = () => {
   return (
     <>
       <Helmet>
-        <title>{article ? `${article.title} - Erewash Rag` : 'Article - Erewash Rag'}</title>
-        <meta name="description" content={article ? article.excerpt || article.title : 'Read satirical local news articles on Erewash Rag.'} />
-        <meta name="keywords" content={article ? `${article.title}, ${article.category}, Erewash Rag, satirical news, local news, humor, blog, Erewash, UK, parody, entertainment` : 'Erewash Rag, satirical news, local news, humor, blog, Erewash, UK, parody, entertainment'} />
-        <link rel="canonical" href={article ? `https://erewash-rag.co.uk/articles/${article.id}` : 'https://erewash-rag.co.uk/articles'} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={article ? article.title : 'Article - Erewash Rag'} />
-        <meta property="og:description" content={article ? article.excerpt || article.title : 'Read satirical local news articles on Erewash Rag.'} />
-        <meta property="og:url" content={article ? `https://erewash-rag.co.uk/articles/${article.id}` : 'https://erewash-rag.co.uk/articles'} />
-        <meta property="og:image" content={article ? article.image : 'https://erewash-rag.co.uk/favicon.svg'} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={article ? article.title : 'Article - Erewash Rag'} />
-        <meta name="twitter:description" content={article ? article.excerpt || article.title : 'Read satirical local news articles on Erewash Rag.'} />
-        <meta name="twitter:image" content={article ? article.image : 'https://erewash-rag.co.uk/favicon.svg'} />
+        
       </Helmet>
       <div className="article-page">
         <Link to="/" className="back-link">

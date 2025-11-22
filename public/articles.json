@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1",
+    "title": "Sample Article",
+    "category": "Technology",
+    "author": "John Doe",
+    "date": "2024-01-15",
+    "image": "https://via.placeholder.com/800x400",
+    "excerpt": "This is a sample article excerpt.",
+    "content": "<p>This is the full content of the article. You can add HTML content here.</p><p>More paragraphs and content can go here.</p>",
+    "featured": true,
+    "sourceUrl": "https://example.com"
+  }
+]
+
