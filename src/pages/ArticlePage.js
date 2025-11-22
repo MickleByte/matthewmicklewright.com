@@ -55,13 +55,7 @@ const ArticlePage = () => {
         
         <article>
           <header className="article-header">
-            <span className="article-category">{article.category}</span>
             <h1 className="article-page-title">{article.title}</h1>
-            <div className="article-page-meta">
-              <span>By {article.author}</span>
-              <span>•</span>
-              <span>{format(new Date(article.date), 'MMMM dd, yyyy')}</span>
-            </div>
           </header>
 
           <img 
@@ -76,21 +70,7 @@ const ArticlePage = () => {
           />
         </article>
 
-        {/* Source Section */}
-        {article.sourceUrl && (
-          <section className="article-source">
-            <h3>Source</h3>
-            <p>This article was generated based on information from the following source:</p>
-            <a 
-              href={article.sourceUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="source-link"
-            >
-              {article.sourceUrl}
-            </a>
-          </section>
-        )}
+        
       </div>
     </>
   );

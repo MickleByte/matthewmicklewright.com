@@ -1,15 +1,19 @@
 [
   {
     "id": "1",
-    "title": "Sample Article",
-    "category": "Technology",
-    "author": "John Doe",
-    "date": "2024-01-15",
-    "image": "https://via.placeholder.com/800x400",
-    "excerpt": "This is a sample article excerpt.",
+    "title": "Erewash Rag",
+    "image": "/images/article-1.png",
+    "excerpt": "This is the excerpt of the article. You can add HTML content here.",
     "content": "<p>This is the full content of the article. You can add HTML content here.</p><p>More paragraphs and content can go here.</p>",
-    "featured": true,
-    "sourceUrl": "https://example.com"
+    "featured": false
+  },
+  {
+    "id": "2",
+    "title": "QR Pub Crawl Tracker",
+    "image": "/images/article-2.png",
+    "excerpt": "This is the excerpt of the article. You can add HTML content here.",
+    "content": "<p>This is the full content of the article. You can add HTML content here.</p><p>More paragraphs and content can go here.</p>",
+    "featured": false
   }
 ]
 
