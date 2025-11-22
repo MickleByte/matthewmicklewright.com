@@ -3,7 +3,7 @@
     "id": "1",
     "title": "Erewash Rag",
     "image": "/images/article-1.png",
-    "excerpt": "This is the excerpt of the article. You can add HTML content here.",
+    "excerpt": "An satirical news site where all the articles are AI generated",
     "content": "<p>This is the full content of the article. You can add HTML content here.</p><p>More paragraphs and content can go here.</p>",
     "featured": false
   },
@@ -11,7 +11,7 @@
     "id": "2",
     "title": "QR Pub Crawl Tracker",
     "image": "/images/article-2.png",
-    "excerpt": "This is the excerpt of the article. You can add HTML content here.",
+    "excerpt": "A pub crawl tracker that uses QR codes to track your progress",
     "content": "<p>This is the full content of the article. You can add HTML content here.</p><p>More paragraphs and content can go here.</p>",
     "featured": false
   }
