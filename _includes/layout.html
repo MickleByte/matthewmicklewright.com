@@ -9,22 +9,16 @@
 <body>
 
     <nav>
-        <a href="/">← Back to Projects</a>
+        <a href="/">Back to Projects</a>
     </nav>
 
     <main class="project-container">
         <header class="project-header">
             <h1>{{ title }}</h1>
-            {% if role or tools or date %}
             <div class="project-meta">
-                {% if role %}<span><strong>Role:</strong> {{ role }}</span>{% endif %}
                 {% if tools %}<span><strong>Tools:</strong> {{ tools }}</span>{% endif %}
-                {% if date %}<span><strong>Date:</strong> {{ date | date: "%B %Y" }}</span>{% endif %}
             </div>
-            {% endif %}
         </header>
-
-        <hr>
 
         <article class="project-content">
             {{ content | safe }}

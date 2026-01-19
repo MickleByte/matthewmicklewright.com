@@ -8,6 +8,15 @@ module.exports = function(eleventyConfig) {
     return value;
   });
 
+  // Add filter to get first image from images array
+  eleventyConfig.addLiquidFilter("firstImage", function(images) {
+    if (!images || !Array.isArray(images) || images.length === 0) {
+      return null;
+    }
+    // Return the first image with /assets/ prefix
+    return "/assets/" + images[0];
+  });
+
   // Create a collection for portfolio articles
   eleventyConfig.addCollection("portfolio", function(collectionApi) {
     return collectionApi.getFilteredByGlob("projects/*.md").sort((a, b) => {

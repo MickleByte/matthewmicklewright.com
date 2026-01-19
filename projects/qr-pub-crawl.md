@@ -4,8 +4,8 @@ title: "The Erewash Rag"
 tools: "React, AWS, DynamoDB"
 images: ["img1.webp"]
 ---
-# Project Overview
-
+# The Project Overview
+This was a great project where I solved X by doing Y.
 
 ![Process Image 1](/assets/img1.webp)
 
