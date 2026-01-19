@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | My Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="/">← Back to Projects</a>
+    </nav>
+
+    <main class="project-container">
+        <header class="project-header">
+            <h1>{{ title }}</h1>
+            {% if role or tools or date %}
+            <div class="project-meta">
+                {% if role %}<span><strong>Role:</strong> {{ role }}</span>{% endif %}
+                {% if tools %}<span><strong>Tools:</strong> {{ tools }}</span>{% endif %}
+                {% if date %}<span><strong>Date:</strong> {{ date | date: "%B %Y" }}</span>{% endif %}
+            </div>
+            {% endif %}
+        </header>
+
+        <hr>
+
+        <article class="project-content">
+            {{ content | safe }}
+        </article>
+    </main>
+
+    <footer>
+        <p>© 2026 Matthew Micklewright</p>
+    </footer>
+
+</body>
+</html>
+
