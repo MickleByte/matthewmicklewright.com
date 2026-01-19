@@ -4,27 +4,9 @@ title: "Portfolio"
 ---
 <div class="portfolio-container">
     <header class="portfolio-header">
-        <h1>My Portfolio</h1>
-        <p class="portfolio-intro">A collection of my recent work and projects.</p>
+        <h1>Matthew Micklewright</h1>
     </header>
 
-    <div class="portfolio-grid">
-        {% for project in collections.portfolio %}
-        <article class="portfolio-card">
-            <h2><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
-            {% if project.data.role or project.data.tools or project.data.date %}
-            <div class="portfolio-meta">
-                {% if project.data.role %}<span class="meta-item">{{ project.data.role }}</span>{% endif %}
-                {% if project.data.tools %}<span class="meta-item">{{ project.data.tools }}</span>{% endif %}
-                {% if project.data.date %}<span class="meta-item">{{ project.data.date | date: "%B %Y" }}</span>{% endif %}
-            </div>
-            {% endif %}
-            {% if project.data.description %}
-            <p class="portfolio-description">{{ project.data.description }}</p>
-            {% endif %}
-            <a href="{{ project.url }}" class="portfolio-link">View Project →</a>
-        </article>
-        {% endfor %}
-    </div>
+    <p>My name is Matt and this website stands as a testament that I have too much time on my hands. Please enjoy some of my recent projects on my <a href="/portfolio">portfolio</a>.</p>
 </div>
 

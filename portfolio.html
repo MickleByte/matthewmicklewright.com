@@ -1,0 +1,30 @@
+---
+layout: layout-home.html
+title: "Portfolio"
+---
+<div class="portfolio-container">
+    <header class="portfolio-header">
+        <h1>Portfolio</h1>
+        <p class="portfolio-intro">A collection of my recent work and projects.</p>
+    </header>
+
+    <div class="portfolio-grid">
+        {% for project in collections.portfolio %}
+        <article class="portfolio-card">
+            <h2><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
+            {% if project.data.role or project.data.tools or project.data.date %}
+            <div class="portfolio-meta">
+                {% if project.data.role %}<span class="meta-item">{{ project.data.role }}</span>{% endif %}
+                {% if project.data.tools %}<span class="meta-item">{{ project.data.tools }}</span>{% endif %}
+                {% if project.data.date %}<span class="meta-item">{{ project.data.date | date: "%B %Y" }}</span>{% endif %}
+            </div>
+            {% endif %}
+            {% if project.data.description %}
+            <p class="portfolio-description">{{ project.data.description }}</p>
+            {% endif %}
+            <a href="{{ project.url }}" class="portfolio-link">View Project →</a>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+
