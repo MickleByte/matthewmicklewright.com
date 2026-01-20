@@ -2,7 +2,8 @@
 layout: layout.html
 title: "The Erewash Rag"
 tools: "React, AWS, LLMs"
-images: ["article-1-1.webp", "article1-2.png"]
+date: "2025-07-01"
+images: ["article-1-1.webp", "erewash-rag-2.png"]
 ---
 # Project Overview
 
@@ -14,7 +15,7 @@ As well as the direct benefit of annoying my friend, I thought it presented a go
 
 ### Design
 
-![Image 2](/assets/article-1-2.png)
+![Image 2](/assets/erewash-rag-2.png)
 
 The design centres around a CRUD REST API exposed with API Gateway. Calls to the endpoints are handled by a Python 'Articles' Lambda that can create/read/update/delete the Articles from DynamoDB. 
 
