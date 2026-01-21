@@ -11,6 +11,8 @@ images: ["article-4-1.png", "article-4-2.jpg"]
 
 Created as a part of my final year disertation, this web app allows users to draw logic diagrams by dragging and dropping componenets. Diagrams can then be simulated to test their functionality and can also be automaticaly converted to Verilog HDL. As well as the Verilog code for the module, the app can also generate a test bench. The project is open source and can be used under the GNU General Public License.
 
+[Try it online here](http://hdl-transpiler.s3-website.eu-west-2.amazonaws.com/)
+
 [Github Repo](https://github.com/MickleByte/HDLTranspiler)
 
 
