@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: !Sub 'Static website hosting for ${ProjectName}'
+Description: Static website hosting for matthewmicklewright.com
 
 Parameters:
   ProjectName:
