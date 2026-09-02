@@ -49,8 +49,9 @@ projects.sort(
                 <Image
                   src={project.data.cover}
                   alt={project.data.coverAlt ?? ""}
-                  widths={[400, 800]}
-                  sizes="(min-width: 768px) 24rem, 100vw"
+                  widths={[400, 640, 960, 1440]}
+                  sizes="(min-width: 1024px) 476px, (min-width: 768px) calc((100vw - 4.5rem) / 2), calc(100vw - 3rem)"
+                  quality={90}
                   class="aspect-video w-full object-cover"
                 />
               )}

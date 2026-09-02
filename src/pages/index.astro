@@ -55,7 +55,7 @@ const featuredProjects = sortedProjects.slice(0, 3);
 
         <p class="mt-6 max-w-2xl text-xl text-gray-400">
           Software Engineer based in Nottingham, UK. I'm interested in full stack development,
-          CI/CD, System Design and building things.
+          CI/CD, System Design and building things!
         </p>
 
         <a
@@ -96,8 +96,9 @@ const featuredProjects = sortedProjects.slice(0, 3);
                   <Image
                     src={project.data.cover}
                     alt={project.data.coverAlt ?? ""}
-                    widths={[400, 800]}
-                    sizes="(min-width: 768px) 16rem, 100vw"
+                    widths={[400, 640, 960, 1440]}
+                    sizes="(min-width: 1024px) 310px, (min-width: 768px) calc((100vw - 6rem) / 3), calc(100vw - 3rem)"
+                    quality={90}
                     class="aspect-video w-full object-cover"
                   />
                 )}

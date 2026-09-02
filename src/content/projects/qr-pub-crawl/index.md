@@ -2,7 +2,7 @@
 title: "QR Pub Crawl"
 tools: "React, Python, DynamoDB, PR Envs"
 date: "2025-09-01"
-cover: "./architecture.png"
+cover: "./cover.png"
 ---
 # Project Overview
 
@@ -28,7 +28,7 @@ At this time my local pub crawl 'The Sawley Shuffle' is the only one aimed to be
 
 The architecture uses all serverless AWS components, this means cost to run for low to no users is zero but it will scale very well should traffic increase. The API is exposed using API gateway and calls are handled by a Python lambda which can read and write to DynamoDB. On the UI the React app is available on an S3 bucket configured for static site hosting.
 
-# CI/CD
+# Development Process
 
 ![Process Image 1](./dev_process_with_pr_envs.png "right")
 
