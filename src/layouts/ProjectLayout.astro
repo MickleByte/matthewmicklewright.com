@@ -1,0 +1,119 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  technologies: string[];
+  github?: string;
+  cover?: ImageMetadata;
+}
+
+const {
+  title,
+  description,
+  technologies,
+  github,
+  cover,
+} = Astro.props;
+
+const summary = description ?? `${title} — a project by Matthew Micklewright.`;
+
+// Social previews need an absolute URL, and `cover.src` is the hashed path
+// Astro emits for the optimised image.
+const coverUrl = cover && new URL(cover.src, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>{title} | Matthew Micklewright</title>
+    <meta name="description" content={summary} />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={summary} />
+    {coverUrl && <meta property="og:image" content={coverUrl} />}
+    <meta
+      name="twitter:card"
+      content={coverUrl ? "summary_large_image" : "summary"}
+    />
+  </head>
+
+  <body class="bg-gray-950 text-gray-100">
+    <header class="mx-auto max-w-5xl px-6 py-6">
+      <nav class="flex justify-between">
+        <a href="/" class="text-xl font-bold">
+          Matthew Micklewright
+        </a>
+
+        <a
+          href="/projects"
+          class="ml-8 text-gray-400 hover:text-white"
+        >
+          Projects
+        </a>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-6 py-16">
+
+      <!-- Header -->
+      <header>
+        <a
+          href="/projects"
+          class="text-sm text-blue-400 hover:text-blue-300"
+        >
+          ← All projects
+        </a>
+
+        <h1 class="mt-6 text-5xl font-bold">
+          {title}
+        </h1>
+
+        {description && (
+          <p class="mt-4 max-w-2xl text-xl text-gray-400">
+            {description}
+          </p>
+        )}
+
+        <!-- Technologies -->
+        <div class="mt-6 flex flex-wrap gap-2">
+          {
+            technologies.map((technology) => (
+              <span class="rounded-full bg-gray-800 px-3 py-1 text-sm">
+                {technology}
+              </span>
+            ))
+          }
+        </div>
+
+        {
+          github && (
+            <a
+              href={github}
+              class="mt-6 inline-block text-blue-400 hover:text-blue-300"
+            >
+              View on GitHub →
+            </a>
+          )
+        }
+      </header>
+
+      <!-- Markdown content gets inserted here -->
+      <article class="prose prose-invert mt-12 max-w-none">
+        <slot />
+      </article>
+
+    </main>
+
+    <footer class="border-t border-gray-800">
+      <div class="mx-auto max-w-5xl px-6 py-8 text-sm text-gray-500">
+        © 2026 Matthew Micklewright
+      </div>
+    </footer>
+  </body>
+</html>

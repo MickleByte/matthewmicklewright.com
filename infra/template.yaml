@@ -61,10 +61,14 @@ Resources:
         Enabled: true
         HttpVersion: http2
         Origins:
+          # Point at the S3 *website* endpoint rather than the REST endpoint.
+          # The REST endpoint has no notion of an index document, so a request
+          # for /projects/ would 403 instead of serving /projects/index.html.
           - Id: S3Origin
-            DomainName: !GetAtt WebsiteBucket.RegionalDomainName
-            S3OriginConfig:
-              OriginAccessIdentity: ''
+            DomainName: !Select [1, !Split ["://", !GetAtt WebsiteBucket.WebsiteURL]]
+            CustomOriginConfig:
+              OriginProtocolPolicy: http-only
+              HTTPPort: 80
         PriceClass: PriceClass_100
         ViewerCertificate:
           CloudFrontDefaultCertificate: true

@@ -1,9 +1,8 @@
 ---
-layout: layout.html
 title: "CPU Emulation"
 tools: "C++, JS"
 date: "2019-03-01"
-images: ["cpu-emulator-1.png"]
+cover: "./screenshot.png"
 ---
 # Project Overview
 
@@ -11,5 +10,5 @@ This project was developed for a University group project module, it aimed to em
 
 [Github Repo](https://github.com/MickleByte/ARM7TDMI-Emulator)
 
-![Image 1](/assets/cpu-emulator-1.png)
+![Image 1](./screenshot.png)
 

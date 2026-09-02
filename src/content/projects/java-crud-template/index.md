@@ -1,9 +1,8 @@
 ---
-layout: layout.html
 title: "Java API Template"
 tools: "Java, Docker, Springboot"
 date: "2024-09-01"
-images: [article-6-1.png]
+cover: "./screenshot.png"
 ---
 # The Project Overview
 

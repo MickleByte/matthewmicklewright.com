@@ -1,0 +1,87 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import "../../styles/global.css";
+
+const projects = await getCollection("projects");
+
+// Newest first; projects with no date sort to the end.
+projects.sort(
+  (a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0),
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Projects | Matthew Micklewright</title>
+    <meta
+      name="description"
+      content="Projects and things I've built."
+    />
+  </head>
+
+  <body class="bg-gray-950 text-gray-100">
+
+    <header class="mx-auto max-w-5xl px-6 py-6">
+      <a href="/" class="text-xl font-bold">
+        Matthew Micklewright
+      </a>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-6 py-16">
+
+      <h1 class="text-4xl font-bold">
+        Projects
+      </h1>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {
+          projects.map((project) => (
+            <a
+              href={`/projects/${project.id}`}
+              class="group overflow-hidden rounded-xl border border-gray-800 bg-gray-900 hover:border-gray-600"
+            >
+              {project.data.cover && (
+                <Image
+                  src={project.data.cover}
+                  alt={project.data.coverAlt ?? ""}
+                  widths={[400, 800]}
+                  sizes="(min-width: 768px) 24rem, 100vw"
+                  class="aspect-video w-full object-cover"
+                />
+              )}
+
+              <div class="p-6">
+                <h2 class="text-2xl font-semibold group-hover:text-blue-400">
+                  {project.data.title}
+                </h2>
+
+                {project.data.description && (
+                  <p class="mt-3 text-gray-400">
+                    {project.data.description}
+                  </p>
+                )}
+
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {
+                    project.data.technologies.map((technology) => (
+                      <span class="rounded-full bg-gray-800 px-3 py-1 text-sm">
+                        {technology}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+    </main>
+
+  </body>
+</html>

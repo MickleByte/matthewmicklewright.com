@@ -1,52 +1,86 @@
 # MatthewMicklewright.com
 
-Personal portfolio site built with [Eleventy](https://www.11ty.dev/), deployed to AWS S3 + CloudFront via GitHub Actions.
+Personal portfolio site built with [Astro](https://astro.build/), deployed to AWS S3 + CloudFront via GitHub Actions.
 
 ## Tech Stack
 
-- **Static site generator**: Eleventy (11ty) v3
-- **Templating**: Liquid + HTML + Markdown
-- **Hosting**: AWS S3 + CloudFront
+- **Static site generator**: Astro 7 (content collections)
+- **Styling**: Tailwind CSS v4 + `@tailwindcss/typography`
+- **Hosting**: AWS S3 + CloudFront (CloudFormation in `infra/`)
 - **CI/CD**: GitHub Actions (deploys on push to `master`)
 
 ## Getting Started
 
 ```bash
 npm install
-npm start        # dev server with hot reload
+npm run dev      # dev server with hot reload
 npm run build    # build to /build
+npm run preview  # serve the built site
 ```
 
 ## Project Structure
 
 ```
-├── _includes/        # Layout templates (home + project pages)
-├── projects/         # Portfolio entries as Markdown files
-├── css/              # Stylesheet
-├── assets/           # Images and static files
-├── build/            # Generated output (git-ignored)
-├── index.html        # Homepage
-├── portfolio.html    # Portfolio grid
-└── .eleventy.js      # Eleventy config (collections, filters, passthrough)
+├── src/
+│   ├── content/projects/     # One folder per project: index.md + its images
+│   ├── content.config.ts     # Projects collection schema
+│   ├── layouts/              # Project page layout
+│   ├── pages/                # Home, /projects, /projects/[slug]
+│   └── styles/global.css     # Tailwind entrypoint
+├── public/                   # Files copied verbatim (favicon, robots.txt…)
+├── infra/                    # CloudFormation template for S3 + CloudFront
+└── build/                    # Generated output (git-ignored)
 ```
 
 ## Adding a Project
 
-Create a new Markdown file in `projects/` with the following frontmatter:
+Copy `src/content/projects/_template/` to `src/content/projects/<slug>/`. The
+folder name becomes the URL (`/projects/<slug>`), and everything the project
+needs lives inside it:
+
+```
+src/content/projects/qr-pub-crawl/
+├── index.md
+├── screenshot.png
+├── architecture.png
+└── qr-code.png
+```
 
 ```markdown
 ---
-title: Project Name
-date: 2025-01-01
-role: Developer
-tech: JavaScript, AWS
-image: /assets/my-image.png
+title: "QR Pub Crawl"
+description: "Optional one-liner shown on the project cards."
+tools: "React, AWS, Python"
+date: "2025-09-01"
+cover: "./screenshot.png"
+coverAlt: "The pub crawl app on a phone"
+github: "https://github.com/MickleByte/example"   # optional
 ---
 
-Project description here...
+Body written in markdown — headings, lists, links and code blocks are styled by
+the project layout.
+
+![A description of the image](./screenshot.png)
+
+![A description of the image](./screenshot.png "right")
 ```
 
-Projects are sorted newest-first in the portfolio collection.
+Notes:
+
+- **Images go next to `index.md`** and are referenced with relative paths
+  (`./screenshot.png`), in both the body and `cover`. Astro then optimises and
+  hashes them at build time, and a wrong path fails the build rather than
+  shipping a broken image.
+- **Text wraps around an image** when the path is followed by `"left"` or
+  `"right"` — `![alt](./diagram.png "right")`. The marker is consumed rather
+  than rendered as a tooltip, and the float is dropped on narrow screens. Any
+  other title text renders as a normal image title.
+- `cover` is used for the project card thumbnails and the social preview image;
+  it is optional, as is everything except `title`.
+- Folders starting with `_` are ignored, so `_template/` never gets published.
+  The same trick works for drafts (`_wip-thing/`).
+- Only put images in `public/` when they need a stable, unhashed URL.
+- Projects sort newest-first by `date`; undated ones sort last.
 
 ## Deployment
 
