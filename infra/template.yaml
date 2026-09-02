@@ -1,0 +1,93 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: !Sub 'Static website hosting for ${ProjectName}'
+
+Parameters:
+  ProjectName:
+    Type: String
+    Description: Name of the project, used for resource naming and descriptions
+
+Resources:
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: "matthewmicklewright.com"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebsiteBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: '*'
+            Action: s3:GetObject
+            Resource: !Sub '${WebsiteBucket.Arn}/*'
+
+  # CloudFront Distribution for UI
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: "CloudFront for matthewmicklewright.com"
+        DefaultCacheBehavior:
+          AllowedMethods: [GET, HEAD, OPTIONS]
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          DefaultTTL: 86400
+          MinTTL: 1
+          MaxTTL: 31536000
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
+        Enabled: true
+        HttpVersion: http2
+        Origins:
+          - Id: S3Origin
+            DomainName: !GetAtt WebsiteBucket.RegionalDomainName
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: true
+        CustomErrorResponses:
+          - ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+          - ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+
+Outputs:
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref WebsiteBucket
+    Export:
+      Name: !Sub '${AWS::StackName}-BucketName'
+
+  WebsiteURL:
+    Description: URL of the static website
+    Value: !GetAtt WebsiteBucket.WebsiteURL
+    Export:
+      Name: !Sub '${AWS::StackName}-WebsiteURL'
+
+  CloudFrontDomainName:
+    Description: CloudFront distribution domain name
+    Value: !GetAtt CloudFrontDistribution.DomainName
+    Export:
+      Name: !Sub '${AWS::StackName}-CloudFrontDomainName'
+
+  CloudFrontDistributionId:
+    Description: CloudFront distribution ID (used for cache invalidation)
+    Value: !Ref CloudFrontDistribution
+    Export:
+      Name: !Sub '${AWS::StackName}-CloudFrontDistributionId'
