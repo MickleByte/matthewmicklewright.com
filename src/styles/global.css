@@ -1,2 +1,54 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+/*
+ * `![alt](./img.png "left")` in markdown floats the image so the following
+ * text wraps around it. The class lands on the paragraph holding the image —
+ * see src/plugins/image-align.mjs.
+ */
+.prose p.img-left,
+.prose p.img-right {
+  width: 45%;
+  margin-top: 0.5rem;
+}
+
+.prose p.img-left {
+  float: left;
+  margin-right: 1.75rem;
+}
+
+.prose p.img-right {
+  float: right;
+  margin-left: 1.75rem;
+}
+
+.prose p.img-left img,
+.prose p.img-right img {
+  width: 100%;
+  margin: 0;
+}
+
+/* Keep a float inside the section it was written in. */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose hr {
+  clear: both;
+}
+
+.prose::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Too narrow to wrap around: fall back to full width. */
+@media (width < 40rem) {
+  .prose p.img-left,
+  .prose p.img-right {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

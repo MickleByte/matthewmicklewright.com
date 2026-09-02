@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import { satteri } from "@astrojs/markdown-satteri";
+import { imageAlign } from "./src/plugins/image-align.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +17,11 @@ export default defineConfig({
   // clean URLs via its IndexDocument setting.
   build: {
     format: "directory",
+  },
+
+  markdown: {
+    // `![alt](./img.png "left")` floats the image so the text wraps around it.
+    processor: satteri({ mdastPlugins: [imageAlign] }),
   },
 
   vite: {

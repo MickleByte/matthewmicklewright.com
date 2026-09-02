@@ -1,20 +1,23 @@
 ---
 title: "The Erewash Rag"
-tools: "React, AWS, LLMs"
+tools: "Web Scraper, Microservices, LLMs, Terraform"
 date: "2025-07-01"
-images: ["article-1-1.webp", "erewash-rag-2.png"]
+cover: "./screenshot.webp"
 ---
 # Project Overview
 
-I created [erewash-rag.co.uk](https://erewash-rag.co.uk/) primarily to annoy my friend who is the Mayor of Erewash (the Borough I live in). The original intention was to create a web scraper that collated some information on any press release/article the Borough Council produced and then pass these details to an LLM to generate a satirical news article.
+The [erewash-rag.co.uk](https://erewash-rag.co.uk/) is a joke satirical news site that creates articles about local news where I live in Erewash. It's a distributed system with a few microservices that:
+ 1. Scrape *real* news sites for source articles
+ 2. Generate text and images based on those source articles
+ 3. Make the generated content available to the UI through a REST API
 
-As well as the direct benefit of annoying my friend, I thought it presented a good opportunity to play around with API integration with LLMs and more generally to build and deploy a solution in AWS with a web UI.
+As well as having the direct benefit of annoying my friend who is a Borough Councilor, this project presented a great opportunity to play around with LLMs and more generally to build and deploy a solution in AWS with a web UI.
 
-![Image 1](/assets/article-1-1.webp)
+![Image 1](./screenshot.webp "left")
 
-### Design
+### Architecture
 
-![Image 2](/assets/erewash-rag-2.png)
+![Image 2](./architecture.png)
 
 The design centres around a CRUD REST API exposed with API Gateway. Calls to the endpoints are handled by a Python 'Articles' Lambda that can create/read/update/delete the Articles from DynamoDB. 
 

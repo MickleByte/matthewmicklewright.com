@@ -2,7 +2,7 @@
 title: "Long Eaton Scouts Website"
 tools: "HTML/CSS, Github Pages"
 date: "2022-01-01"
-images: ["article-5-1.jpg"]
+cover: "./screenshot.jpg"
 ---
 # Project Overview
 

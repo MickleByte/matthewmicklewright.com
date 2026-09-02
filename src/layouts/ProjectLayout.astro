@@ -6,6 +6,7 @@ interface Props {
   description?: string;
   technologies: string[];
   github?: string;
+  cover?: ImageMetadata;
 }
 
 const {
@@ -13,7 +14,14 @@ const {
   description,
   technologies,
   github,
+  cover,
 } = Astro.props;
+
+const summary = description ?? `${title} — a project by Matthew Micklewright.`;
+
+// Social previews need an absolute URL, and `cover.src` is the hashed path
+// Astro emits for the optimised image.
+const coverUrl = cover && new URL(cover.src, Astro.site);
 ---
 
 <!doctype html>
@@ -23,9 +31,15 @@ const {
     <meta name="viewport" content="width=device-width" />
 
     <title>{title} | Matthew Micklewright</title>
+    <meta name="description" content={summary} />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={summary} />
+    {coverUrl && <meta property="og:image" content={coverUrl} />}
     <meta
-      name="description"
-      content={description ?? `${title} — a project by Matthew Micklewright.`}
+      name="twitter:card"
+      content={coverUrl ? "summary_large_image" : "summary"}
     />
   </head>
 

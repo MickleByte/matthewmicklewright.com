@@ -1,13 +1,13 @@
 ---
 title: "Yes and No button"
 tools: "CI/CD, HTML/CSS/JS"
-images: ["article-3-1.png"]
+cover: "./screenshot.png"
 ---
 # Project Overview
 
 A super simple project I threw together to help my Girlfriend decide what she wanted for dinner. It has some JS to randomly selects a funny (and possibly insulting) yes or no answer.
 
-![Image 1](/assets/article-3-1.png)
+![Image 1](./screenshot.png)
 
 The main interesting points here are the use of Github actions as a CI/CD to automatically deploy changes to a S3 bucket configured for static site hosting. This allows me to add new options when the modd strikes and get them quickly deployed.
 
