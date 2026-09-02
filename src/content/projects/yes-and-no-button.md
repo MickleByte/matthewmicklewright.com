@@ -1,5 +1,4 @@
 ---
-layout: layout.html
 title: "Yes and No button"
 tools: "CI/CD, HTML/CSS/JS"
 images: ["article-3-1.png"]

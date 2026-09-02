@@ -1,5 +1,4 @@
 ---
-layout: layout.html
 title: "Long Eaton Scouts Website"
 tools: "HTML/CSS, Github Pages"
 date: "2022-01-01"

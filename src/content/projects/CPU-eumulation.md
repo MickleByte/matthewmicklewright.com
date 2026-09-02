@@ -1,5 +1,4 @@
 ---
-layout: layout.html
 title: "CPU Emulation"
 tools: "C++, JS"
 date: "2019-03-01"

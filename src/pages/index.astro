@@ -1,0 +1,125 @@
+---
+import { getCollection } from "astro:content";
+import "../styles/global.css";
+
+const projects = await getCollection("projects");
+
+// Newest first; projects with no date sort to the end.
+const sortedProjects = projects.sort(
+  (a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0),
+);
+
+const featuredProjects = sortedProjects.slice(0, 3);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Matthew Micklewright | Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Matthew Micklewright, software engineer."
+    />
+  </head>
+
+  <body class="bg-gray-950 text-gray-100">
+
+    <header class="mx-auto max-w-5xl px-6 py-6">
+      <nav class="flex justify-between">
+        <a href="/" class="text-xl font-bold">
+          Matthew Micklewright
+        </a>
+
+        <a href="/projects" class="text-gray-400 hover:text-white">
+          Projects
+        </a>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- Hero -->
+      <section class="mx-auto max-w-5xl px-6 py-24">
+
+        <p class="text-blue-400">
+          Software Engineer
+        </p>
+
+        <h1 class="mt-4 text-5xl font-bold tracking-tight">
+          Matthew Micklewright
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-xl text-gray-400">
+          Software Engineer based in Nottingham, UK. I'm interested in full stack development,
+          CI/CD, System Design and building things.
+        </p>
+
+        <a
+          href="/projects"
+          class="mt-8 inline-block rounded-lg bg-white px-5 py-3 font-medium text-gray-950"
+        >
+          View my projects
+        </a>
+
+      </section>
+
+
+      <!-- Featured projects -->
+      <section class="mx-auto max-w-5xl px-6 py-16">
+
+        <div class="flex items-end justify-between">
+          <h2 class="text-3xl font-bold">
+            Projects
+          </h2>
+
+          <a
+            href="/projects"
+            class="text-gray-400 hover:text-white"
+          >
+            View all →
+          </a>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+
+          {
+            featuredProjects.map((project) => (
+              <a
+                href={`/projects/${project.id}`}
+                class="group rounded-xl border border-gray-800 bg-gray-900 p-6 hover:border-gray-600"
+              >
+                <h3 class="text-xl font-semibold group-hover:text-blue-400">
+                  {project.data.title}
+                </h3>
+
+                {project.data.description && (
+                  <p class="mt-3 text-gray-400">
+                    {project.data.description}
+                  </p>
+                )}
+
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {
+                    project.data.technologies.map((technology) => (
+                      <span class="rounded-full bg-gray-800 px-2 py-1 text-xs">
+                        {technology}
+                      </span>
+                    ))
+                  }
+                </div>
+              </a>
+            ))
+          }
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </body>
+</html>

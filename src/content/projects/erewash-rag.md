@@ -1,5 +1,4 @@
 ---
-layout: layout.html
 title: "The Erewash Rag"
 tools: "React, AWS, LLMs"
 date: "2025-07-01"

@@ -6,6 +6,9 @@ build/
 _site/
 dist/
 
+# Astro generated types and cache
+.astro/
+
 # Environment variables
 .env
 .env.local

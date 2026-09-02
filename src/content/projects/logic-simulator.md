@@ -1,5 +1,4 @@
 ---
-layout: layout.html
 title: "Logic Simulator"
 tools: "JS, Logic Circuits, Verilog"
 date: "2019-04-01"

@@ -1,5 +1,4 @@
 ---
-layout: layout.html
 title: "Java API Template"
 tools: "Java, Docker, Springboot"
 date: "2024-09-01"

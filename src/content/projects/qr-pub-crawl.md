@@ -1,5 +1,4 @@
 ---
-layout: layout.html
 title: "QR Pub Crawl"
 tools: "React, AWS, Python"
 date: "2025-09-01"
