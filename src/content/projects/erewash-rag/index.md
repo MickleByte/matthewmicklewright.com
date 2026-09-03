@@ -1,6 +1,7 @@
 ---
 title: "The Erewash Rag"
 tools: "Web Scraper, Microservices, LLMs, Terraform"
+description: "A satirical news site that generates articles about local news using LLMs and a microservice architecture"
 date: "2025-07-01"
 cover: "./cover.png"
 ---
@@ -27,7 +28,7 @@ For this project I wanted to make use of three microservices to differentiate an
 
 ### Development Process
 
-Unlike other solo developer projects I've done which were monolithic I decided to pursue a microservice architecture in this case because there seemed clear separation of responsibility on what each service would do based on how a real news room might work. For the names of the services I even chose real roles from a news room to make it clearer within the domain what each services does.
+Unlike other solo developer projects I've done which were monolithic I decided to pursue a microservice architecture in this case because there seemed clear separation of responsibility on what each service would do based on how a real news room might work. For the names of the services I even chose real roles from a newsroom to make it clearer within the domain what each services does.
 
 As well as being deployed separately I also decided to break these services into their own Repositories. This presented some challenges with CI/CD as there were cross repo dependencies e.g. you can't deploy the UI if the infra to deploy to doesn't exist yet! However I was helped by building images for each service and pushing them to a registry for later use. That way I could easily select what was being deployed and allow me to get the right building blocks in place.
 
