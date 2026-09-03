@@ -4,6 +4,7 @@ tools: "CI/CD, HTML/CSS/JS"
 cover: "./screenshot.png"
 description: "A simple web app to randomly select a yes or no answer"
 github: "https://github.com/MickleByte/beths-yes-or-no"
+demo: "http://beths-yes-or-no.s3-website.eu-west-2.amazonaws.com/"
 ---
 # Project Overview
 

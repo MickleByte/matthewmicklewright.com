@@ -4,6 +4,7 @@ tools: "Web Scraper, Microservices, LLMs, Terraform"
 description: "A satirical news site that generates articles about local news using LLMs and a microservice architecture"
 date: "2025-07-01"
 cover: "./cover.png"
+demo: "https://erewash-rag.co.uk"
 ---
 # Project Overview
 

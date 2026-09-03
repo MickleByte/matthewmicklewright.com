@@ -25,6 +25,7 @@ const projects = defineCollection({
         cover: image().optional(),
         coverAlt: z.string().optional(),
         github: z.string().url().optional(),
+        demo: z.string().url().optional(),
       })
       .transform((data) => ({
         ...data,

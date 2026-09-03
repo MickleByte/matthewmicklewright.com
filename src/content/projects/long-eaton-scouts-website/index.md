@@ -5,6 +5,7 @@ date: "2022-01-01"
 description: "A static website to provide basic info about Scouts in my local area"
 cover: "./screenshot.jpg"
 github: "https://github.com/MickleByte/longEatonDistrictSite"
+demo: "https://micklebyte.github.io/longEatonDistrictSite/"
 ---
 # Project Overview
 
