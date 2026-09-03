@@ -1,7 +1,7 @@
 ---
 title: "Companies House Scanner"
 description: "A Python Command Line Util that can scan companies listed on UK Companies house to determine their property value"
-tools: "Python, "
+tools: "Python, REST APIs, iXBRL"
 date: "2026-01-01"
 # Optional. Path is relative to this file; drop the image in this folder.
 cover: "./screenshot.png"
