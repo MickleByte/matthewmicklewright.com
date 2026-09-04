@@ -4,6 +4,7 @@ tools: "JS, Logic Circuits, Verilog"
 date: "2019-04-01"
 description: "A web app to draw and simulate logic circuits and convert them to Verilog HDL"
 github: "https://github.com/MickleByte/logic-simulator"
+demo: "http://hdl-transpiler.s3-website.eu-west-2.amazonaws.com/"
 cover: "./screenshot.jpg"
 ---
 # Project Overview
