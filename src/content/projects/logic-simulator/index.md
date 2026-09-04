@@ -1,6 +1,6 @@
 ---
 title: "Logic Simulator"
-tools: "JS, Logic Circuits, Verilog"
+tools: "JavaScript, Logic Circuits, Verilog"
 date: "2019-04-01"
 description: "A web app to draw and simulate logic circuits and convert them to Verilog HDL"
 github: "https://github.com/MickleByte/logic-simulator"

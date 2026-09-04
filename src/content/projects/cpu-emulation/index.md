@@ -1,10 +1,10 @@
 ---
 title: "CPU Emulation"
-tools: "C++, JS"
+tools: "C++, JavaScript"
 date: "2019-03-01"
 cover: "./screenshot.png"
 github: "https://github.com/MickleByte/ARM7TDMI-Emulator"
-description: "A C++ emulator for the ARM7TDMI processor with a reversible JS debugger"
+description: "A C++ emulator for the ARM7TDMI processor with a reversible JavaScript debugger"
 ---
 # Project Overview
 
