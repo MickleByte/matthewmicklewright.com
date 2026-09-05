@@ -5,6 +5,7 @@ description: "A satirical news site that generates articles about local news usi
 date: "2025-07-01"
 cover: "./cover.png"
 demo: "https://erewash-rag.co.uk"
+github: "https://github.com/orgs/erewash-rag/repositories"
 ---
 # Project Overview
 
