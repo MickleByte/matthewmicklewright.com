@@ -4,6 +4,7 @@ tools: "React, Python, DynamoDB, PR Envs"
 description: "Web app to track pub crawls using QR codes and a leaderboard"
 date: "2025-09-01"
 cover: "./cover.png"
+demo: "https://dev.scan-drink-race.com/crawls/the-sawley-shuffle"
 ---
 # Project Overview
 
@@ -16,8 +17,6 @@ QR codes are an easy way for people in the pub to register a visit and I decided
 Using this and a session ID in local storage it is possible to non-invasively track the user on their crawl and record what pubs they visit and when.
 
 I've later added the leaderboard, a map on the UI as well as navigation links to each pub e.g. to open in Google or Apple Maps. I also implemented a system to allow users to get a 'share code'. This means multiple people can either join the same crawl (using the same code) or a user can resume a crawl later should their session be removed from local storage for whatever reason.
-
-Take a look at the dev site at a leaderboard for the dev site at: https://dev.scan-drink-race.com/crawls/the-sawley-shuffle
 
 My primary aim was to make this app scalable in terms of architecture as well as in scope of what pubs are visitable. For that reason, each pub has its own unique ID and a single pub can feature on any number of crawls. I also chose to make it optional whether users might want to visit a pub so the leaderboard for a crawl is sorted by the number of pubs visited first, then by time.
 
